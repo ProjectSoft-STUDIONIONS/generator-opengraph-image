@@ -1,0 +1,11 @@
+Options -Indexes
+
+<Files index.html>
+	Order Deny,Allow
+	Deny from all
+</Files>
+
+<Files index.tpl>
+	Order Deny,Allow
+	Deny from all
+</Files>

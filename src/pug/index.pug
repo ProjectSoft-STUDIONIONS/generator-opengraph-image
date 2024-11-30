@@ -1,0 +1,130 @@
+link(rel="stylesheet" href!="<?= MODX_SITE_URL ?><?= $this->path ?>css/main.min.css?<?= $this->getHash('css/main.min.css') ?>")
+- var width = 1144;
+- var height = 509;
+.container
+	h1.text-center
+		i.fa.fa-image
+		|Генератор Open Graph Image
+	#app.app
+		.canvas_overlay
+			canvas.cnvs(width=width height=height)
+		.tools_overlay
+			.btn_container
+				textarea.input.post_text(placeholder="Текст поста" cols="30" rows="3")
+			h2.text-center Шрифт
+			div
+				.btn_container
+					div
+						span Имя
+						select.input_select_font_family
+					div
+						span Стиль
+						select.input_select_fontweight
+							option(value="normal" selected) Regular
+							option(value="bold") Bold
+					div
+						span Размер
+						select.input_fontsize
+							- for (var x = 18; x < 92; x += 2)
+								if x==48
+									option(value=x selected)= x
+								else
+									option(value=x)= x
+				.btn_container
+					div
+						span Цвет
+						input.input.input_color.input_select_textcolor(type="color" value="#ffffff")
+					div
+						span Тень
+						input.input.input_color.input_select_textoutline(type="color" value="#000000")
+					div
+						span Обводка
+						input.input_select_linewidth(type="range" min="0" max="50" step="1" value="4")
+			h2.text-center Фото
+			.btn_container
+				div
+					button.btn.btn_green.btn_loadimage Загрузить фото
+				div
+					span Фон:
+					input.input.input_color.input_select_bgcolor(type="color")
+				div
+					span Затенить:
+					input.input_overlay_alpha(type="range" min="0" max="1" step="0.01" value="0.2")
+			.btn_container
+				.flex-column-center
+					button.btn.btn_green.download Сохранить на компьютер
+			.btn_container
+				.flex-column-center
+					h2.text-center Как это выглядит
+					img(src="/assets/modules/renderogimage/image/vk.com.png" alt="Как это выглядит VK")
+					br
+					img(src="/assets/modules/renderogimage/image/tg.png" alt="Как это выглядит Telegram")
+			input.hidden.image_src_input(type="file" accept="image/png,image/jpeg")
+	p &nbsp;
+script(src!="<?= MODX_SITE_URL ?><?= $this->path ?>js/editor.min.js?<?= $this->getHash('js/editor.min.js') ?>")
+script
+	|var params = {canvas: 'canvas.cnvs',width: #{width},height: #{height},bgcolor: '#000000',fontfamily: 'Calibri',fontweight: 'normal',linewidth: 4,fonts: [{name: 'Calibri',url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/Calibri-Regular.ttf)',style: 'normal',weight: '400'},{name: 'Calibri',url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/Calibri-Bold.ttf)',style: 'normal',weight: '700'},{name: 'PT Sans',url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/PTSans-Regular.ttf)',style: 'normal',weight: '400'},{name: 'PT Sans',url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/PTSans-Bold.ttf)',style: 'normal',weight: '700'},{name: 'Oswald',url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/Oswald-Regular.ttf)',style: 'normal',weight: '400'},{name: 'Muller',url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/MullerRegular.ttf)',style: 'normal',weight: '400'},{name: 'Muller',url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/MullerBold.ttf)',style: 'normal',weight: '700'},{name: 'Ruslan Display',url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/RuslanDisplayRegular.ttf)',style: 'normal',weight: '400'}]};var app = new application(params);app.start();
+//-	
+	="\n"
+	|var params = {
+	|	canvas: 'canvas.cnvs',
+	|	width: 510,
+	|	height: 228,
+	|	bgcolor: '#444444',
+	|	fontfamily: 'Calibri',
+	|	fontweight: 'normal',
+	|	linewidth: 4,
+	|	fonts: [
+	|		{
+	|			name: 'Calibri',
+	|			url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/Calibri-Regular.ttf)',
+	|			style: 'normal',
+	|			weight: '400'
+	|		},
+	|		{
+	|			name: 'Calibri',
+	|			url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/Calibri-Bold.ttf)',
+	|			style: 'normal',
+	|			weight: '700'
+	|		},
+	|		{
+	|			name: 'PT Sans',
+	|			url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/PTSans-Regular.ttf)',
+	|			style: 'normal',
+	|			weight: '400'
+	|		},
+	|		{
+	|			name: 'PT Sans',
+	|			url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/PTSans-Bold.ttf)',
+	|			style: 'normal',
+	|			weight: '700'
+	|		},
+	|		{
+	|			name: 'Oswald',
+	|			url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/Oswald-Regular.ttf)',
+	|			style: 'normal',
+	|			weight: '400'
+	|		},
+	|		{
+	|			name: 'Muller',
+	|			url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/MullerRegular.ttf)',
+	|			style: 'normal',
+	|			weight: '400'
+	|		},
+	|		{
+	|			name: 'Muller',
+	|			url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/MullerBold.ttf)',
+	|			style: 'normal',
+	|			weight: '700'
+	|		},
+	|		{
+	|			name: 'Ruslan Display',
+	|			url: 'url(<?= MODX_SITE_URL ?><?= $this->path ?>fonts/RuslanDisplayRegular.ttf)',
+	|			style: 'normal',
+	|			weight: '400'
+	|		}
+	|	]
+	|};
+	|var app = new application(params);
+	|app.start();
+	="\n"

@@ -1,0 +1,23 @@
+@fonts: Calibry 400 Calibri-Regular, Calibry 700 Calibri-Bold, Muller 400 Muller-Regular, Muller 700 Muller-Bold, Oswald 700 Oswald-Bold, PTSans 400 PTSans-Regular, PTSans 700 PTSans-Bold, RuslanDisplay 400 RuslanDisplay-Regular;
+
+.loadFont(@family, @weight, @file){
+	@font-face{
+		font-family: @family;
+		src: url("../fonts/@{file}.woff2") format('woff2'),
+			url("../fonts/@{file}.woff") format("woff"),
+			url("../fonts/@{file}.eot") format('eot'),
+			url("../fonts/@{file}.ttf") format("ttf");
+		font-weight: @weight;
+		font-style: normal;
+	}
+}
+
+.fonts(@i: 1) when (@i <= length(@fonts)) {
+	@font:      extract(@fonts, @i);
+	@family:	extract(@font, 1);
+	@weight:	extract(@font, 2);
+	@file:	    extract(@font, 3);
+	.loadFont(@family, @weight, @file);
+	.fonts(@i + 1);
+}
+.fonts(1);

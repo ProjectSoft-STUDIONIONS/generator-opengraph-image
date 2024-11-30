@@ -1,0 +1,17 @@
+{
+	"name": "renderogimage",
+	"description": "Генератор OpenGraph изображения",
+	"main": "Gruntfile.js",
+	"authors": [
+		"ProjectSoft <projectsoft2009@yandex.ru>"
+	],
+	"license": "MIT",
+	"homepage": "https://github.com/ProjectSoft-STUDIONIONS/generator-opengraph-image",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	]
+}
