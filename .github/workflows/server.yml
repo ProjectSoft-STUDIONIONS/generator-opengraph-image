@@ -1,13 +1,13 @@
-name: Upload files to school hostings
+name: Старт
 on:
   schedule:
     - cron: "0 1 10 * *"
   workflow_dispatch:
     inputs:
       Name:
-        description: Upload files to school hostings
+        description: Запуск
         required: true
-        default: 'Upload files to school hostings'
+        default: 'Запуск'
 jobs:
   # ProjectSoft
   projectsoft:
@@ -99,7 +99,7 @@ jobs:
           ignoreSSL: 1
   # Vasilek
   vasilek:
-    name: Bobrovka
+    name: Vasilek
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -107,13 +107,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Deploy to Hosting Bobrovka
+      - name: Deploy to Hosting Vasilek
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ secrets.FTP_SERVER_852 }}
-          username: ${{ secrets.FTP_USERNAME_852 }}
-          password: ${{ secrets.FTP_PASSWORD_852 }}
-          server-dir: ${{ secrets.FTP_DIR_852 }}
+          server: ${{ secrets.FTP_SERVER_8817 }}
+          username: ${{ secrets.FTP_USERNAME_8817 }}
+          password: ${{ secrets.FTP_PASSWORD_8817 }}
+          server-dir: ${{ secrets.FTP_DIR_8817 }}
           local-dir: ./assets/
           state-name: .status.json
           exclude: |
@@ -132,12 +132,12 @@ jobs:
             **/node_modules/**
             **/test/**
             **/package-lock.json
-      - name: Remove Status file Bobrovka
+      - name: Remove Status file Vasilek
         uses: StephanThierry/ftp-delete-action@v2.1
         with:
-          host: ${{ secrets.FTP_SERVER_852 }}
-          user: ${{ secrets.FTP_USERNAME_852 }}
-          password: ${{ secrets.FTP_PASSWORD_852 }}
+          host: ${{ secrets.FTP_SERVER_8817 }}
+          user: ${{ secrets.FTP_USERNAME_8817 }}
+          password: ${{ secrets.FTP_PASSWORD_8817 }}
           remoteFiles: ".status.json"
-          workingDir: ${{ secrets.FTP_DIR_852 }}
+          workingDir: ${{ secrets.FTP_DIR_8817 }}
           ignoreSSL: 1
