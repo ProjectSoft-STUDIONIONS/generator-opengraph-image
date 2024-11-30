@@ -10,7 +10,7 @@ on:
         default: 'Upload files to school hostings'
 jobs:
   # ProjectSoft
-  deploy:
+  projectsoft:
     name: ProjectSoft
     runs-on: ubuntu-latest
     strategy:
@@ -52,4 +52,92 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           remoteFiles: ".status.json"
           workingDir: ${{ secrets.FTP_DIR }}
+          ignoreSSL: 1
+  # Bobrovka
+  bobrovka:
+    name: Bobrovka
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy to Hosting Bobrovka
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_852 }}
+          username: ${{ secrets.FTP_USERNAME_852 }}
+          password: ${{ secrets.FTP_PASSWORD_852 }}
+          server-dir: ${{ secrets.FTP_DIR_852 }}
+          local-dir: ./assets/
+          state-name: .status.json
+          exclude: |
+            **/.git/**
+            **/.github/**
+            **/src/**
+            **/.gitattributes
+            **/.gitignore
+            **/bower.json
+            **/*.sublime-project
+            **/Gruntfile.js
+            **/LICENSE
+            **/README.md
+            **/package.json
+            **/bower_components/**
+            **/node_modules/**
+            **/test/**
+            **/package-lock.json
+      - name: Remove Status file Bobrovka
+        uses: StephanThierry/ftp-delete-action@v2.1
+        with:
+          host: ${{ secrets.FTP_SERVER_852 }}
+          user: ${{ secrets.FTP_USERNAME_852 }}
+          password: ${{ secrets.FTP_PASSWORD_852 }}
+          remoteFiles: ".status.json"
+          workingDir: ${{ secrets.FTP_DIR_852 }}
+          ignoreSSL: 1
+  # Vasilek
+  vasilek:
+    name: Bobrovka
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy to Hosting Bobrovka
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_852 }}
+          username: ${{ secrets.FTP_USERNAME_852 }}
+          password: ${{ secrets.FTP_PASSWORD_852 }}
+          server-dir: ${{ secrets.FTP_DIR_852 }}
+          local-dir: ./assets/
+          state-name: .status.json
+          exclude: |
+            **/.git/**
+            **/.github/**
+            **/src/**
+            **/.gitattributes
+            **/.gitignore
+            **/bower.json
+            **/*.sublime-project
+            **/Gruntfile.js
+            **/LICENSE
+            **/README.md
+            **/package.json
+            **/bower_components/**
+            **/node_modules/**
+            **/test/**
+            **/package-lock.json
+      - name: Remove Status file Bobrovka
+        uses: StephanThierry/ftp-delete-action@v2.1
+        with:
+          host: ${{ secrets.FTP_SERVER_852 }}
+          user: ${{ secrets.FTP_USERNAME_852 }}
+          password: ${{ secrets.FTP_PASSWORD_852 }}
+          remoteFiles: ".status.json"
+          workingDir: ${{ secrets.FTP_DIR_852 }}
           ignoreSSL: 1
