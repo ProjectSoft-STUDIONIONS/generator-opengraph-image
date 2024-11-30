@@ -1,1 +1,1 @@
-# generator-opengraph-image
+# Генератор OpenGraph изображения
