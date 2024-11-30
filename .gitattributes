@@ -4,6 +4,7 @@
 /src export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore
+/.env export-ignore
 /*.sublime-* export-ignore
 /package.json export-ignore
 /package-lock.json export-ignore
