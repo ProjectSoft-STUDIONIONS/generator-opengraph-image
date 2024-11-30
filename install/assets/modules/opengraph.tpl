@@ -1,7 +1,7 @@
 /**
- * Генератор OpenGraph изображения
+ * RenderOpenGraphImage
  *
- * Генератор OpenGraph image
+ * Генератор OpenGraph изображения
  *
  * @category    module
  * @internal    @modx_category Content
