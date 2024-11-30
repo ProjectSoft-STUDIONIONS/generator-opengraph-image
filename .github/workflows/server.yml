@@ -1,0 +1,55 @@
+name: Upload files to school hostings
+on:
+  schedule:
+    - cron: "0 1 * * 1,4,6"
+  workflow_dispatch:
+    inputs:
+      Name:
+        description: Upload files to school hostings
+        required: true
+        default: 'Upload files to school hostings'
+jobs:
+  # ProjectSoft
+  deploy:
+    name: ProjectSoft
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Deploy to Hosting ProjectSoft
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_DIR }}
+          local-dir: ./assets/
+          state-name: .status.json
+          exclude: |
+            **/.git/**
+            **/.github/**
+            **/src/**
+            **/.gitattributes
+            **/.gitignore
+            **/bower.json
+            **/*.sublime-project
+            **/Gruntfile.js
+            **/LICENSE
+            **/README.md
+            **/package.json
+            **/bower_components/**
+            **/node_modules/**
+            **/test/**
+            **/package-lock.json
+      - name: Remove Status file ProjectSoft
+        uses: StephanThierry/ftp-delete-action@v2.1
+        with:
+          host: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          remoteFiles: ".status.json"
+          workingDir: ${{ secrets.FTP_DIR }}
+          ignoreSSL: 1
