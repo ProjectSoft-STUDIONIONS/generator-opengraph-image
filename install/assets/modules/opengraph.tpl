@@ -37,5 +37,5 @@ if (!$modx->hasPermission('exec_module')) {
 if (!is_array($modx->event->params)) {
     $modx->event->params = [];
 }
-
+$params = $modx->event->params;
 (new RenberOpenGraph($params))->processRequest();

@@ -4,6 +4,7 @@ test
 tests
 *.ini
 *.inf
+*.zip
 *.sublime-workspace
 
 package-lock.json
