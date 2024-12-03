@@ -54,6 +54,8 @@ const application = function(params) {
 					if (e.target.value) {
 						e.target.parentNode.replaceChild(e.target.cloneNode(true), e.target);
 					}
+					console.log(e.target.files);
+					console.log(e.target.files.length);
 				}
 			}
 		});
