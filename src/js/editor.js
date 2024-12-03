@@ -110,6 +110,14 @@ const application = function(params) {
 		getCanvas(params);
 		bindings();
 		loadfonts();
+		
+		reset();
+
+		gameLoop();
+		loadActions();
+	}
+
+	function reset() {
 		let _text = [];
 		let _fltr = [];
 
@@ -131,13 +139,9 @@ const application = function(params) {
 		_fltr.alpha = ge('.input_overlay_alpha').value = '0.2';
 		_fltr.color = bgcolor;
 
+		elements.images = [];
 		elements.text = _text;
 		elements.filterLayer = _fltr;
-
-		gameLoop();
-		loadActions();
-
-
 	}
 
 	function drawImage(img) {
@@ -270,7 +274,7 @@ const application = function(params) {
 		drawElements();
 		requestAnimationFrame(gameLoop);
 	}
-	
+
 	ge('.download').addEventListener('click', function(e) {
 		++index;
 		let file = ("0000" + index).slice(-4);
@@ -282,4 +286,6 @@ const application = function(params) {
 		createEl.click();
 		createEl.remove();
 	});
+
+	ge('.reset').addEventListener('click', reset);
 };

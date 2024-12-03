@@ -1,4 +1,7 @@
 * text=auto
+**/*.js text eol=lf
+**/*.tpl text eol=lf
+**/*.pug text eol=lf
 
 /.github export-ignore
 /src export-ignore
