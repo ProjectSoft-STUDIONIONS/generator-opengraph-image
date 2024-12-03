@@ -34,7 +34,6 @@ const application = function(params) {
 
 	function bindings() {
 		ge(".image_src_input").addEventListener('change', function(e) {
-			console.log(e.target.files);
 			if (e.target.files.length > 0) {
 				let URL = window.webkitURL || window.URL;
 				let img = new Image();
@@ -49,6 +48,12 @@ const application = function(params) {
 					_img.width = img.width;
 					_img.height = img.height;
 					elements.images[0] = _img;
+					try {
+						e.target.value = null;
+					} catch(ex) { }
+					if (e.target.value) {
+						e.target.parentNode.replaceChild(e.target.cloneNode(true), e.target);
+					}
 				}
 			}
 		});
